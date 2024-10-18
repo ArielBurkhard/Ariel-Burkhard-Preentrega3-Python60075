@@ -16,9 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from inicio.views import index
+from inicio.views import index, categorias, sobre_mi, lista_de_speedruns, insc_speedrun, registrate, ingresa
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", index)
+    path("", index, name="inicio"),
+    path("categorias/", categorias, name="categorias"),
+    path("sobre_mi/", sobre_mi, name="sobre_mi"),
+    path("lista_de_speedrun/", lista_de_speedruns, name="lista_de_speedruns"),
+    path('insc_speedrun/<str:juego>/<int:horas>/<int:minutos>/<int:segundos>/<str:link>/', insc_speedrun, name='insc_speedrun'),
+    path("registrate/", registrate, name="registrate"),
+    path("ingresa/", ingresa, name="ingresa"),
+
 ]
