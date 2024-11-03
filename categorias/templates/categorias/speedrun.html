@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+  Speedruns
+{% endblock title_head %}
+
+{% block div %}
+<h1>Sube tu Speedrun</h1>
+{% endblock div %}
+
+{% block section %}
+  <form action={% url "speedrun"%} method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button>Subir</button>
+
+
+  </form>
+  <button><a class="navbar-brand" href={% url "lista_de_speedruns" %}>Lista de Speedruns</a></button>
+{% endblock section %}

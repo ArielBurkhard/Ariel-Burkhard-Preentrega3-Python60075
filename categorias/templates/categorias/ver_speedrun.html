@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+   Ver speedrun
+{% endblock title_head %}
+{% block div %}
+    <ul>
+        <li>Juego: {{run.juego}}</li>
+        <li>Tiempo: {{run.tiempo}}</li>
+        <li>Link: {{run.link}}</li>
+        <!-- <iframe width="560" height="315" src="{{ run.link }}" frameborder="0" allowfullscreen></iframe> -->
+    </ul>
+{% endblock div %}
+{% block section %}
+
+{% endblock section %}

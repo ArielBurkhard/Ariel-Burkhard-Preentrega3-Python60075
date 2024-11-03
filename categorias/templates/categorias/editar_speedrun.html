@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+  Editar {{run}}
+{% endblock title_head %}
+
+{% block div %}
+<h1>Editar Speedrun de {{run}}</h1>
+{% endblock div %}
+
+{% block section %}
+  <form action={% url "editar_speedrun" run.id %} method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button>Editar</button>
+
+
+  </form>
+  
+{% endblock section %}

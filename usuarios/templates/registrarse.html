@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+  Speedruns
+{% endblock title_head %}
+
+{% block div %}
+<h2>Completa el registro</h2>
+{% endblock div %}
+
+{% block section %}
+  <form action={% url "registrarse"%} method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button>Registrarse</button>
+
+
+  </form>
+{% endblock section %}

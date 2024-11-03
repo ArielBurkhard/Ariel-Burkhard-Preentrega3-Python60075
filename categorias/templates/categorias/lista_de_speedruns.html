@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+   Lista de speedrun
+{% endblock title_head %}
+
+{% block div %}
+<form action={% url "lista_de_speedruns"%}>
+   {% csrf_token %}
+   {{form}}
+   <button>Buscar</button>
+   <button><a href={% url "lista_de_speedruns" %}>Todos</a></button>
+</form>
+{% endblock div %}
+
+{% block section %}
+{% if run %}
+<ul>
+   {% for speedrun in run %}
+      <li>{{speedrun}} 
+         | <a href={% url "ver_speedrun" speedrun.id %}>Ver mas</a> 
+         | <a href={% url "editar_speedrun" speedrun.id %}>Editar</a>
+         | <a href={% url "eliminar_speedrun" speedrun.id %}>Eliminar</a>
+      </li>
+   {% endfor %}
+</ul>
+{% else %}
+<p>No hay Speedruns registrados</p>
+{% endif %}
+<button><a href={% url "speedrun" %}>Sube tu Speedrun</a></button>
+{% endblock section %}
