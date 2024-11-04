@@ -1,4 +1,20 @@
 {% extends "base.html" %}
+
 {% block title_head %}
-Ingresar
+  Ingresar
 {% endblock title_head %}
+
+{% block div %}
+<h2>Inicia sesion</h2>
+{% endblock div %}
+
+{% block section %}
+  <form action={% url "ingresar"%} method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button>Ingresar</button>
+
+
+  </form>
+{% endblock section %}

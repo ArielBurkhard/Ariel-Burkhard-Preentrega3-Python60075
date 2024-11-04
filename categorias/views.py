@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.template import Template
 from .models import Speedrun
 from categorias.forms import Formulario_speedrun, Formulario_buscar_speedrun, Formulario_editar_speedun
+from django.contrib.auth.decorators import login_required
 
 def categorias(request):
     return render(request, "categorias.html")
@@ -9,12 +10,12 @@ def categorias(request):
 def ver_speedrun(request, id):
     run = Speedrun.objects.get(id=id)
     return render(request, "categorias/ver_speedrun.html", {"run":run})
-
+@login_required
 def eliminar_speedrun(request, id):
     run = Speedrun.objects.get(id=id)
     run.delete()
     return redirect("lista_de_speedruns")
-
+@login_required
 def editar_speedrun(request, id):
     run = Speedrun.objects.get(id=id)
     formulario = Formulario_editar_speedun(initial={"juego": run.juego, "tiempo": run.tiempo, "link": run.link})
@@ -39,7 +40,7 @@ def lista_de_speedruns(request):
     else:
         run = Speedrun.objects.all()
     return render(request, "categorias/lista_de_speedruns.html", {"run": run, "form": formulario})
-
+@login_required
 def speedrun(request):
     formulario = Formulario_speedrun()
     if request.method == "POST":

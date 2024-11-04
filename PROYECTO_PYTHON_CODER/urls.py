@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("inicio.urls")),
     path("categorias/", include("categorias.urls")),
-    path("usuario/", include("usuarios.urls")),
+    path("usuarios/", include("usuarios.urls")),
 
    
 
