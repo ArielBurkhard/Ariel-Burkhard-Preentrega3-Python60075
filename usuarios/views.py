@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from usuarios.models import Usuario
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
-from usuarios.forms import Formulario_Registrarse
+from usuarios.forms import Formulario_Registrarse, Formulario_editar_perfil
 
 def registrarse(request):
     formulario = Formulario_Registrarse()
@@ -28,3 +28,10 @@ def ingresar(request):
             login(request, usuario)
             return redirect("categorias")           
     return render(request, "ingresar.html", {"form": formulario})
+def editar_perfil(request):
+    formulario = Formulario_editar_perfil(instance=request.user)
+    if request.method == "POST":
+        formulario = Formulario_editar_perfil(request.POST, instance=request.user)
+    if formulario.is_valid():
+        formulario.save()
+    return render(request, "editar_perfil.html", {"form": formulario})

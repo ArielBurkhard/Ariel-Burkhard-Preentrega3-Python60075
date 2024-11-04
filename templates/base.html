@@ -21,10 +21,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 {% if  request.user.is_authenticated%}
-                <a class="navbar-brand" href="#">{{request.user.username}}</a>
+                <a class="navbar-brand" href={% url "editar_perfil" %}>{{request.user.username}}</a>
                 <form action={% url "cerrar_sesion" %} method="post">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-secondary" value="Cerrar Sesion">
+                    <input type="submit" class="btn btn-secondary" value="Cerrar Sesion">    
                 </form>
                 {% else %}
                 <a class="btn btn-primary" href={% url "ingresar" %}>Ingresar</a>
@@ -57,7 +57,7 @@
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2>HORA DE CORRER</h2>
+                        <a class="btn btn-primary" href={% url "speedrun" %}><h2>HORA DE CORRER</h2></a>
                         <p class="lead">Haz cada segundo contar, rompe tus límites y demuestra lo que puedes lograr. ¡Es tu momento, corre más rápido que nunca!</p>
                         <p class="mb-0">Cada segundo perdido puede ser la diferencia entre la victoria y la derrota. Un solo error y todo puede desmoronarse. No hay margen para fallos, no hay excusas. Si no corres al máximo, alguien más lo hará. ¡Corre como si tu vida dependiera de ello, porque en este juego solo hay ganadores o perdedores!</p>
                     </div>
@@ -74,7 +74,7 @@
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2>HORA DE PELEAR</h2>
+                        <a class="btn btn-primary" href={% url "fighting_games" %}><h2>HORA DE PELEAR</h2></a>
                         <p class="lead">Cada golpe cuenta, cada segundo es crucial. No hay espacio para la duda cuando el único camino es la victoria. ¡Prepárate para luchar con todo! </p>
                         <p class="mb-0">En este juego no hay piedad. Un solo error te pone en la cuerda floja, y el más mínimo descuido puede costarte la pelea. Aquí no se trata solo de atacar, se trata de leer al oponente, de reaccionar más rápido y de castigar sin dudar. Cada batalla es una guerra por tu honor. ¡No dejes nada en el tanque, sal y destruye a tu rival!.</p>
                     </div>

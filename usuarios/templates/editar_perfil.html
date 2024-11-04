@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title_head %}
+  Editando perfil
+{% endblock title_head %}
+
+{% block div %}
+Editando perfil de {{request.user.username}}
+{% endblock div %}
+
+{% block section %}
+  <form action={% url "editar_perfil"%} method="POST">
+    {% csrf_token %}
+    {{form}}
+
+    <button>Editar</button>
+
+
+  </form>
+{% endblock section %}
